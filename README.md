@@ -9,6 +9,7 @@ An Electron application to convert MD files or Markdown text to a docx file.
 
 ## Installation
 
+- Requires [pandoc](https://pandoc.org/installing.html) to be installed
 ```npm install```
 
 ## Usage
