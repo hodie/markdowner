@@ -14,4 +14,4 @@ An Electron application for handling RTF clipboard operations.
 
 ## Usage
 
-```npm build```
+```npm run build```
