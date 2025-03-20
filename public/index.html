@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdowner</title>
+    <link href="/css/styles.css" rel="stylesheet">
+    <style>
+        /* Ensure smooth animations for textarea and upload area */
+        textarea {
+            transition: all 0.3s ease-in-out;
+        }
+
+        textarea:hover {
+            border-color: #3b82f6; /* Tailwind's primary color */
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        textarea:focus {
+            transform: scale(1.05);
+            border-color: #2563eb; /* Tailwind's primary-dark color */
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.7);
+        }
+
+        .upload-zone {
+            transition: all 0.3s ease-in-out;
+            border: 2px dashed #d1d5db; /* Tailwind's gray-300 */
+            background-color: #f9fafb; /* Tailwind's gray-50 */
+        }
+
+        .upload-zone:hover {
+            border-color: #3b82f6; /* Tailwind's primary color */
+            background-color: #e0f2fe; /* Tailwind's light blue */
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        .upload-icon {
+            transition: color 0.3s ease-in-out;
+            color: #9ca3af; /* Tailwind's gray-400 */
+        }
+
+        .upload-zone:hover .upload-icon {
+            color: #3b82f6; /* Tailwind's primary color */
+        }
+
+        /* File info styling */
+        .file-info {
+            padding: 1rem;
+            background-color: rgba(59, 130, 246, 0.1);
+            border-radius: 0.5rem;
+            text-align: left;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* Preview mode styling for textarea */
+        .preview-mode {
+            color: #6b7280;
+            font-style: italic;
+        }
+    </style>
+
+    <script type="module" src="/js/app.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="min-h-full">
+        <div class="bg-primary-600 pb-32">
+            <header class="py-10">
+                <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                    <h1 class="text-3xl font-bold tracking-tight text-white">Markdown to Word Converter</h1>
+                </div>
+            </header>
+        </div>
+
+        <main class="-mt-32">
+            <div class="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
+                <div class="rounded-lg bg-white px-6 py-8 shadow-xl sm:px-12">
+                    
+                    <div class="upload-container mt-8">
+                        <label class="block text-sm font-medium text-gray-700">Upload a Markdown File</label>
+                        <div id="dropzone" class="upload-zone flex flex-col items-center justify-center h-64 rounded-xl border-dashed p-12 text-center hover:border-primary-500 card-hover">
+                            <svg class="upload-icon h-16 w-16 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                            </svg>
+                            <div class="space-y-2">
+                                <div class="text-base font-medium text-gray-700">
+                                    Drop your file here, or click to select
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    Supports .md and .markdown files
+                                </div>
+                            </div>
+                        </div>
+                        <input type="file" id="fileInput" accept=".md,.markdown" class="hidden" aria-label="Choose markdown file" />
+                    </div>
+                    <div class="mt-8 text-center">
+                        <p class="text-sm text-gray-500">or</p>
+                    </div>
+                    <div class="markdown-container relative">
+                        <label for="markdownInput" class="block text-sm font-medium text-gray-700">Enter your Markdown</label>
+                        <textarea id="markdownInput" class="w-full h-50 px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-primary-500 focus:border-primary-500" placeholder="# Start writing your markdown here..."></textarea>
+                    </div>
+
+
+                    <!-- Update the button structure to include a span for the text content -->
+                    <div class="mt-8">
+                        <div class="button-group flex justify-center">
+                            <!-- Export to DOCX Button -->
+                            <button 
+                              id="convertButton" 
+                              class="convert-button docx-button mt-2" 
+                              disabled
+                            >
+                              <span class="button-icon">📄</span>
+                              <span class="button-text">Export DOCX</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,336 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom animations */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.gradient-animate {
+    background: linear-gradient(-45deg, #1a70ff, #f840aa, #1657e6, #e91f88);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Toast animations */
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+
+/* Custom button styles */
+/* Custom button styles */
+
+/* Replace the existing convert-button styles with these enhanced styles */
+.convert-button {
+    /* Base styles */
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    color: white;
+    background-color: #1a70ff;
+    border-radius: 0.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(26, 112, 255, 0.2), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+  
+  /* Gradient background for active state */
+  .convert-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a70ff, #1657e6);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Hover state with subtle animation */
+  .convert-button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 14px rgba(26, 112, 255, 0.25), 0 3px 6px rgba(0, 0, 0, 0.12);
+  }
+  
+  .convert-button:hover:not(:disabled)::before {
+    background: linear-gradient(135deg, #2b90ff, #1a70ff);
+  }
+  
+  /* Active/pressed state */
+  .convert-button:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(26, 112, 255, 0.2);
+  }
+  
+  /* Add a subtle icon to the button */
+  .convert-button::after {
+    content: '';
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 17L17 7'/%3E%3Cpath d='M7 7h10v10'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-position: center;
+    opacity: 0;
+    width: 24px;
+    height: 24px;
+    margin-left: 8px;
+    transition: opacity 0.2s ease, transform 0.3s ease;
+  }
+  
+  .convert-button:hover:not(:disabled)::after {
+    opacity: 0.8;
+    transform: translateX(3px);
+  }
+  
+  /* Enhanced disabled state styling */
+  .convert-button:disabled {
+    background-color: #e5e7eb; /* Light gray background */
+    color: #9ca3af; /* Medium gray text */
+    border: 2px solid #f3f4f6;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+  
+  .convert-button:disabled::before {
+    opacity: 0;
+  }
+  
+  /* Loading state animation for the button */
+  .convert-button.loading {
+    pointer-events: none;
+  }
+  
+  .convert-button.loading::after {
+    content: '';
+    opacity: 1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83'%3E%3C/path%3E%3C/svg%3E");
+    animation: spin 1.5s linear infinite;
+  }
+  
+@keyframes spin {
+from {
+    transform: rotate(0deg);
+}
+to {
+    transform: rotate(360deg);
+}
+}
+
+/* Add these button variant styles after your existing .convert-button style */
+
+/* Button group styling for better layout */
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* DOCX specific button style (blue) */
+.convert-button.docx-button {
+  background-color: #1a70ff; /* Primary blue */
+}
+
+.convert-button.docx-button::before {
+  background: linear-gradient(135deg, #1a70ff, #1657e6);
+}
+
+.convert-button.docx-button:hover:not(:disabled)::before {
+  background: linear-gradient(135deg, #2b90ff, #1a70ff);
+}
+
+.convert-button.docx-button::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z'%3E%3C/path%3E%3Cpolyline points='13 2 13 9 20 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* Optional: Button icon styling for emoji icons */
+.button-icon {
+  margin-right: 6px;
+  font-size: 0.9em;
+}
+
+/* Toast styles */
+.local-toast {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 9999;
+    animation: slideIn 0.3s ease forwards;
+}
+
+.local-toast.success {
+    background-color: #10b981;
+}
+
+.local-toast.error {
+    background-color: #ef4444;
+}
+
+/* Add to your existing toast styles */
+
+/* Warning toast style */
+.local-toast.warning {
+    background-color: #f59e0b; /* Amber-500 */
+    color: white;
+}
+
+/* Processing toast style for better visibility */
+.local-toast.processing {
+    background-color: #3b82f6; /* Blue-500 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Loader animation for processing toast */
+.notification-loader {
+    width: 18px;
+    height: 18px;
+    border: 2px solid white;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: loader-spin 1s linear infinite;
+}
+
+@keyframes loader-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Add this to your existing tailwind.css file */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component styles - properly organized to avoid circular dependencies */
+@layer components {
+  /* Button styles */
+  .convert-button {
+    @apply font-semibold py-3 px-6 rounded-lg bg-blue-500 text-white cursor-pointer transition-all duration-200 relative overflow-hidden flex items-center justify-center border-none shadow-md;
+  }
+
+  .convert-button:hover:not(:disabled) {
+    @apply transform -translate-y-0.5 shadow-lg;
+  }
+
+  .convert-button:active:not(:disabled) {
+    @apply transform translate-y-0.5 shadow-sm;
+  }
+
+  .convert-button:disabled {
+    @apply bg-slate-400 cursor-not-allowed opacity-70 shadow-none;
+  }
+
+  .convert-button.loading {
+    @apply relative pointer-events-none;
+  }
+
+  /* Use direct CSS for elements with pseudo-elements and animations */
+  .convert-button.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+    margin-left: 10px;
+  }
+
+  /* DOCX button specific styles */
+  .convert-button.docx-button {
+    @apply bg-blue-600;
+  }
+
+  .convert-button.docx-button:hover:not(:disabled) {
+    @apply bg-blue-500;
+  }
+
+  /* Button icon styles */
+  .button-icon {
+    @apply mr-2 text-lg leading-none;
+  }
+
+  /* Toast notifications */
+  .notification-container {
+    @apply fixed bottom-5 right-5 flex flex-col gap-2.5 z-50;
+  }
+
+  .local-toast {
+    @apply py-3 px-4 rounded-md text-white shadow-lg flex items-center min-w-[250px] opacity-100 transform translate-y-0 transition-all duration-300;
+  }
+
+  /* Avoid @apply for classes that could cause circular dependencies */
+  .local-toast.hiding {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  /* Don't use @apply for utility classes like 'hidden' */
+  .local-toast.hidden {
+    display: none;
+  }
+
+  .local-toast.info {
+    @apply bg-blue-500;
+  }
+
+  .local-toast.success {
+    @apply bg-emerald-500;
+  }
+
+  .local-toast.error {
+    @apply bg-red-500;
+  }
+
+  .local-toast.warning {
+    @apply bg-amber-500;
+  }
+
+  .local-toast.processing {
+    @apply bg-blue-500 flex items-center gap-2;
+  }
+
+  /* Dropzone styles */
+  #dropzone {
+    @apply border-2 border-dashed border-slate-300 rounded-lg p-8 text-center cursor-pointer transition-all duration-200;
+  }
+
+  #dropzone.dragging {
+    @apply bg-slate-100 border-blue-500;
+  }
+}
+
+/* Define keyframes outside of layers */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
