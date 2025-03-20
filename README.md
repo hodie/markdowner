@@ -1,12 +1,11 @@
-# Electron RTF Clipboard Handler
+# markdowner
 
-An Electron application for handling RTF clipboard operations.
+An Electron application to convert MD files or Markdown text to a docx file.
 
 ## Features
 
-- Custom URL handling
-- RTF clipboard operations
-- [Other features]
+- Drop or select .md or .markdown file to convert to docx file
+- Write or paste markdown content into textarea and convert to docx file
 
 ## Installation
 
