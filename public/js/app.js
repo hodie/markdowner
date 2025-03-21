@@ -116,7 +116,7 @@ class MarkdownApp {
       fileInput: null,
       markdownInput: null,
       convertButton: null,
-      markdownPreview: null
+      //markdownPreview: null
     };
     
     // Services
@@ -232,7 +232,7 @@ class MarkdownApp {
     this.elements.fileInput = document.getElementById('fileInput');
     this.elements.markdownInput = document.getElementById('markdownInput');
     this.elements.convertButton = document.getElementById('convertButton');
-    this.elements.markdownPreview = document.getElementById('markdownPreview');
+    //this.elements.markdownPreview = document.getElementById('markdownPreview');
     
     // Log missing elements for debugging
     const missingElements = [];
